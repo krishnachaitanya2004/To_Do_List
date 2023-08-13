@@ -17,7 +17,7 @@ font-size: 48px;
 
 #input-email{
     align-self: center;
-    width: 400px;
+    width: 350px;
     height: 30px;
     border-radius: 10px;
     border: transparent;
@@ -27,7 +27,7 @@ font-size: 48px;
 
 #input-password{
     align-self: center;
-    width: 400px;
+    width: 350px;
     height: 30px;
     border-radius: 10px;
     border: transparent;
@@ -37,7 +37,7 @@ font-size: 48px;
 
 #signUp{
     align-self: center;
-    width: 300px;
+    width: 250px;
     height: 50px;
     font-size: 30px;
     font-family: 'Algerian';

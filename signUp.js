@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const button = document.getElementById("signUp");
-const sinupGoogle = document.getElementById("GoogleSignUp");
+const signupGoogle = document.getElementById("GoogleSignUp");
 
 
 button.addEventListener("click", () => {
@@ -35,12 +35,12 @@ button.addEventListener("click", () => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert("Sign-up error");
+            alert("Sign-up failed. Please try again.");
         });
 });
 
 
-sinupGoogle.addEventListener("click", () => {
+signupGoogle.addEventListener("click",  () => {
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 auth.languageCode = 'it';
@@ -56,13 +56,17 @@ signInWithPopup(auth, provider)
     document.getElementById("input-email").value = ""; // Clear email input
     document.getElementById("input-password").value = ""; // Clear password input
     alert("Sign-up successful! You can now log in.");
+    sessionStorage.setItem("userEmail", user.email);
     window.location.href = "home.html";
+
     // ...
    }
+   
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.log(errorMessage);
     // The email of the user's account used.
     const email = error.customData.email;
     // The AuthCredential type that was used.
@@ -70,3 +74,5 @@ signInWithPopup(auth, provider)
     // ...
   });
 });
+
+  
