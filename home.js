@@ -25,7 +25,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
-  const dbRef = ref(db,"To_Do_List");
+  const user = auth.currentUser;
+  const userId = user.uid; // Get the user's unique ID
+  const dbRef = ref(db, `Users/${userId}/To_Do_List`);
 
   const inputVal = document.getElementById("input")
   const addBtn = document.getElementById("addBtn")
@@ -54,7 +56,7 @@ const app = initializeApp(firebaseConfig);
         Do_List.appendChild(newLi);
 
         newLi.addEventListener("click", () => {
-            let location = ref(db,`To_Do_List/${itemKey}`);
+            let location = ref(db,`Users/${userId}/To_Do_List/${itemKey}`);
             remove(location)
             .then(() => {
                 alert("Task Completed");
@@ -99,7 +101,7 @@ const app = initializeApp(firebaseConfig);
     });
    
     const userId= user.uid;
-    remove(ref(db,`To_Do_List/${userId}`));
+    remove(ref(db,`Users/${userId}/To_Do_List/${itemKey}`));
         
     })
 
