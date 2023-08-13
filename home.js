@@ -3,6 +3,9 @@ import{getDatabase, ref, remove,push, onValue} from 'https://www.gstatic.com/fir
 import {getAuth, signOut} from 'https://www.gstatic.com/firebasejs/9.0.1/firebase-auth.js';
 
 const userEmail = sessionStorage.getItem('userEmail');
+const userId = sessionStorage.getItem('userId');
+console.log(userEmail);
+console.log(userId);
 
 if (userEmail) {
     const emailDisplay = document.getElementById('user-email');
@@ -25,9 +28,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
-  const user = auth.currentUser;
-  const userId = user.uid; // Get the user's unique ID
-  const dbRef = ref(db, `Users/${userId}/To_Do_List`);
+  const user = getAuth().currentUser;
+  const dbRef = ref(db, `To_Do_List/${userId}`);
 
   const inputVal = document.getElementById("input")
   const addBtn = document.getElementById("addBtn")
@@ -54,9 +56,8 @@ const app = initializeApp(firebaseConfig);
         let newLi = document.createElement("li");
         newLi.textContent = itemValue;
         Do_List.appendChild(newLi);
-
         newLi.addEventListener("click", () => {
-            let location = ref(db,`Users/${userId}/To_Do_List/${itemKey}`);
+            let location = ref(db,`To_Do_List/${userId}/${itemKey}`);
             remove(location)
             .then(() => {
                 alert("Task Completed");
@@ -101,7 +102,7 @@ const app = initializeApp(firebaseConfig);
     });
    
     const userId= user.uid;
-    remove(ref(db,`Users/${userId}/To_Do_List/${itemKey}`));
+    remove(ref(db,`To_Do_List/${userId}/${itemKey}`));
         
     })
 

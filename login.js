@@ -1,5 +1,3 @@
-
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";   
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js" ;
 
@@ -13,10 +11,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();  // Initialize authentication instance once
+
 const button = document.getElementById("Login");
 
 button.addEventListener("click", () => {
-    const auth = getAuth();
     const emailInput = document.getElementById("input-email").value;
     const passwordInput = document.getElementById("input-password").value;
     
@@ -24,9 +23,9 @@ button.addEventListener("click", () => {
         .then((userCredential) => {
             const user = userCredential.user;
             if (user) {
-            sessionStorage.setItem("userEmail", user.email);
-             window.location.href = "home.html";
-
+                sessionStorage.setItem("userEmail", user.email);
+                sessionStorage.setItem("userId", user.uid);
+                window.location.href = "home.html";
             }
         })
         .catch((error) => {

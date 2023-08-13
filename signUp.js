@@ -30,6 +30,8 @@ button.addEventListener("click", () => {
                 document.getElementById("input-email").value = ""; // Clear email input
                 document.getElementById("input-password").value = ""; // Clear password input
                 window.location.href = "login.html";
+                sessionStorage.setItem("userEmail", user.email);
+                sessionStorage.setItem("userId", user.uid);
             }
         })
         .catch((error) => {
@@ -57,6 +59,7 @@ signInWithPopup(auth, provider)
     document.getElementById("input-password").value = ""; // Clear password input
     alert("Sign-up successful! You can now log in.");
     sessionStorage.setItem("userEmail", user.email);
+    sessionStorage.setItem("userId", user.uid);
     window.location.href = "home.html";
 
     // ...
