@@ -1,0 +1,54 @@
+body{
+    background: linear-gradient(to right, #3e38aa, #9e9ece);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+#image{
+align-self: center;
+border:3px solid white;
+padding: 20px;
+border-radius: 50%;
+font-size: 48px;
+}
+
+#input-email{
+    align-self: center;
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+    border: transparent;
+    padding: 10px;
+
+}
+
+#input-password{
+    align-self: center;
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+    border: transparent;
+    padding: 10px;
+
+}
+
+#Login{
+    align-self: center;
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    font-family: 'Algerian';
+    color: rgb(156, 50, 50);
+    background-color:orange;
+    border-radius: 10px;
+    border: transparent;
+    cursor: pointer;
+}
+
+a{
+    text-align: center;
+    color: yellow;
+}
